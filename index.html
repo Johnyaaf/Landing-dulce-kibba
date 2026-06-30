@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page profesional para una tienda de Instagram con productos destacados, opiniones y compra directa por WhatsApp.">
+  <meta name="keywords" content="tienda instagram, compras online, productos, whatsapp, moda, accesorios">
+  <meta name="author" content="Tienda Instagram">
+
+  <title>Tienda Instagram | Compra por WhatsApp</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Encabezado y navegacion principal -->
+  <header class="site-header" id="inicio">
+    <nav class="navbar" aria-label="Navegacion principal">
+      <a class="logo" href="#inicio" aria-label="Ir al inicio">
+        <img src="img/logo.png" alt="Logo de Tienda Instagram" class="logo__image">
+        <span class="logo__text">Tienda IG</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+        <span class="nav-toggle__line"></span>
+      </button>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-menu__item"><a class="nav-menu__link" href="#productos">Productos</a></li>
+        <li class="nav-menu__item"><a class="nav-menu__link" href="#nosotros">Nosotros</a></li>
+        <li class="nav-menu__item"><a class="nav-menu__link" href="#opiniones">Opiniones</a></li>
+        <li class="nav-menu__item"><a class="nav-menu__link" href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero principal -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Nuevos favoritos cada semana</p>
+        <h1 class="hero__title" id="hero-title">Productos elegidos para comprar facil desde Instagram</h1>
+        <p class="hero__text">
+          Bienvenida a nuestra tienda. Encuentra productos seleccionados con cuidado,
+          atencion cercana y compra directa por WhatsApp.
+        </p>
+
+        <div class="hero__actions">
+          <a class="button button--primary" href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer">
+            Comprar por WhatsApp
+          </a>
+          <a class="button button--secondary" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+            Ver Instagram
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__media" aria-label="Foto destacada de la tienda">
+        <img src="img/foto-destacada.jpg" alt="Producto destacado presentado por la tienda" class="hero__image">
+      </div>
+    </section>
+
+    <!-- Seccion de productos destacados -->
+    <section class="products section" id="productos" aria-labelledby="products-title">
+      <div class="section__header">
+        <p class="section__eyebrow">Catalogo</p>
+        <h2 class="section__title" id="products-title">Productos destacados</h2>
+        <p class="section__description">
+          Una seleccion de los productos mas pedidos por nuestra comunidad en Instagram.
+        </p>
+      </div>
+
+      <div class="products__grid">
+        <article class="product-card">
+          <img src="img/producto-1.jpg" alt="Producto destacado 1" class="product-card__image">
+          <div class="product-card__content">
+            <h3 class="product-card__title">Producto esencial</h3>
+            <p class="product-card__text">Diseno versatil, ideal para usar todos los dias.</p>
+            <p class="product-card__price">$19.990</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="img/producto-2.jpg" alt="Producto destacado 2" class="product-card__image">
+          <div class="product-card__content">
+            <h3 class="product-card__title">Favorito de la semana</h3>
+            <p class="product-card__text">Uno de los productos mas guardados en Instagram.</p>
+            <p class="product-card__price">$24.990</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <img src="img/producto-3.jpg" alt="Producto destacado 3" class="product-card__image">
+          <div class="product-card__content">
+            <h3 class="product-card__title">Edicion especial</h3>
+            <p class="product-card__text">Stock limitado para quienes buscan algo diferente.</p>
+            <p class="product-card__price">$29.990</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Seccion sobre la tienda -->
+    <section class="about section" id="nosotros" aria-labelledby="about-title">
+      <div class="about__image-wrapper">
+        <img src="img/nosotros.jpg" alt="Equipo preparando pedidos para clientes" class="about__image">
+      </div>
+
+      <div class="about__content">
+        <p class="section__eyebrow">Nosotros</p>
+        <h2 class="section__title" id="about-title">Una tienda cercana, simple y confiable</h2>
+        <p class="about__text">
+          Nacimos en Instagram para ofrecer una experiencia de compra rapida,
+          transparente y personalizada. Cada pedido se confirma por WhatsApp,
+          resolvemos tus dudas antes de comprar y cuidamos cada detalle del envio.
+        </p>
+        <ul class="about__list">
+          <li>Atencion personalizada por WhatsApp.</li>
+          <li>Productos seleccionados y fotografiados con detalle.</li>
+          <li>Despachos coordinados de forma simple y segura.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Opiniones de clientes -->
+    <section class="reviews section" id="opiniones" aria-labelledby="reviews-title">
+      <div class="section__header">
+        <p class="section__eyebrow">Opiniones</p>
+        <h2 class="section__title" id="reviews-title">Lo que dicen nuestras clientas</h2>
+      </div>
+
+      <div class="reviews__grid">
+        <article class="review-card">
+          <p class="review-card__text">
+            "Compre por Instagram y me respondieron super rapido. El producto llego impecable."
+          </p>
+          <div class="review-card__author">
+            <span class="review-card__name">Camila R.</span>
+            <span class="review-card__source">Cliente verificada</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <p class="review-card__text">
+            "Me ayudaron a elegir antes de comprar. Muy buena atencion y envio puntual."
+          </p>
+          <div class="review-card__author">
+            <span class="review-card__name">Valentina M.</span>
+            <span class="review-card__source">Cliente verificada</span>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <p class="review-card__text">
+            "Las fotos eran tal cual el producto. Volveria a comprar sin pensarlo."
+          </p>
+          <div class="review-card__author">
+            <span class="review-card__name">Fernanda P.</span>
+            <span class="review-card__source">Cliente verificada</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Llamado final a la accion -->
+    <section class="cta section" aria-labelledby="cta-title">
+      <div class="cta__content">
+        <h2 class="cta__title" id="cta-title">Lista para hacer tu pedido?</h2>
+        <p class="cta__text">
+          Escribenos por WhatsApp o visita nuestro Instagram para ver novedades,
+          disponibilidad y promociones.
+        </p>
+      </div>
+      <div class="cta__actions">
+        <a class="button button--primary" href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer">
+          Comprar por WhatsApp
+        </a>
+        <a class="button button--secondary" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+          Ver Instagram
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de pagina -->
+  <footer class="footer" id="contacto">
+    <div class="footer__brand">
+      <a class="logo logo--footer" href="#inicio" aria-label="Volver al inicio">
+        <img src="img/logo.png" alt="Logo de Tienda Instagram" class="logo__image">
+        <span class="logo__text">Tienda IG</span>
+      </a>
+      <p class="footer__text">
+        Compra facil, atencion cercana y novedades todas las semanas desde Instagram.
+      </p>
+    </div>
+
+    <div class="footer__links">
+      <a href="#productos" class="footer__link">Productos</a>
+      <a href="#nosotros" class="footer__link">Nosotros</a>
+      <a href="#opiniones" class="footer__link">Opiniones</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
+      <a href="https://wa.me/56912345678" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
+    </div>
+
+    <div class="footer__bottom">
+      <p>&copy; 2026 Tienda IG. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
