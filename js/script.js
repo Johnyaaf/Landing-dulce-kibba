@@ -154,4 +154,45 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // Carrusel aislado para tarjetas de producto que lo declaren.
+  document.querySelectorAll("[data-product-carousel]").forEach(function (carousel) {
+    const images = carousel.querySelectorAll(".product-card__carousel-image");
+    const dots = carousel.querySelectorAll("[data-carousel-dot]");
+    const prevButton = carousel.querySelector("[data-carousel-prev]");
+    const nextButton = carousel.querySelector("[data-carousel-next]");
+    let currentIndex = 0;
+
+    function showSlide(index) {
+      currentIndex = (index + images.length) % images.length;
+
+      images.forEach(function (image, imageIndex) {
+        image.classList.toggle("is-active", imageIndex === currentIndex);
+      });
+
+      dots.forEach(function (dot, dotIndex) {
+        dot.classList.toggle("is-active", dotIndex === currentIndex);
+      });
+    }
+
+    if (images.length === 0) return;
+
+    if (prevButton) {
+      prevButton.addEventListener("click", function () {
+        showSlide(currentIndex - 1);
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", function () {
+        showSlide(currentIndex + 1);
+      });
+    }
+
+    dots.forEach(function (dot, dotIndex) {
+      dot.addEventListener("click", function () {
+        showSlide(dotIndex);
+      });
+    });
+  });
 });
