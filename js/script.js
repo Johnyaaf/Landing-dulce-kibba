@@ -251,4 +251,20 @@ document.addEventListener("DOMContentLoaded", function () {
       reviewForm.reset();
     });
   }
+
+  // "Ver mas / Ver menos" en la descripcion de cada producto (solo visible en
+  // mobile via CSS): evita que una tarjeta con texto largo quede mucho mas
+  // alta que sus vecinas en la grilla de 2 columnas.
+  document.querySelectorAll(".product-card__text").forEach(function (text) {
+    const toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "product-card__toggle";
+    toggle.textContent = "Ver más";
+    text.insertAdjacentElement("afterend", toggle);
+
+    toggle.addEventListener("click", function () {
+      const expanded = text.classList.toggle("is-expanded");
+      toggle.textContent = expanded ? "Ver menos" : "Ver más";
+    });
+  });
 });

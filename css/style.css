@@ -332,6 +332,39 @@ button {
   margin-top: 8px;
 }
 
+/* En mobile la descripcion se trunca a 1 linea para que ninguna tarjeta quede
+   mucho mas alta que sus vecinas en la grilla de 2 columnas; "Ver mas" la expande. */
+.product-card__text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  overflow: hidden;
+}
+
+.product-card__text.is-expanded {
+  -webkit-line-clamp: unset;
+  line-clamp: unset;
+  overflow: visible;
+}
+
+/* Boton "Ver mas / Ver menos" (solo se ve en mobile, ver media query mas abajo). */
+.product-card__toggle {
+  background: none;
+  border: 0;
+  color: var(--pink-dark);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-top: 4px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.product-card__toggle[hidden] {
+  display: none;
+}
+
 .product-card__price {
   background: var(--pink-soft);
   border-radius: 999px;
@@ -766,6 +799,17 @@ button {
 @media (min-width: 640px) {
   body {
     padding-bottom: 0;
+  }
+
+  /* Desde tablet se muestra la descripcion completa; "Ver mas" es solo para mobile. */
+  .product-card__text {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .product-card__toggle {
+    display: none;
   }
 
   .section {
