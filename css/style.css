@@ -266,28 +266,16 @@ button {
 }
 
 .hero__media {
+  aspect-ratio: 4 / 3;
   background: linear-gradient(135deg, rgba(255, 227, 235, 0.95), rgba(248, 234, 219, 0.92));
   border: 1px solid rgba(91, 55, 39, 0.1);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  min-height: 310px;
   overflow: hidden;
+  position: relative;
 }
 
-.hero__image {
-  height: 100%;
-  min-height: 310px;
-  object-fit: cover;
-  transition: transform 600ms ease;
-  width: 100%;
-}
-
-.hero__media:hover .hero__image {
-  transform: scale(1.045);
-}
-
-.products__grid,
-.reviews__grid {
+.products__grid {
   display: grid;
   gap: 18px;
 }
@@ -298,27 +286,28 @@ button {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   overflow: hidden;
   transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
 }
 
-.product-card:hover,
-.review-card:hover {
+.product-card:hover {
   border-color: rgba(244, 138, 167, 0.38);
   box-shadow: 0 18px 46px rgba(59, 36, 26, 0.14);
   transform: translateY(-4px);
 }
 
-.product-card__image {
-  aspect-ratio: 4 / 3.35;
-  width: 100%;
-  object-fit: contain;
-  background: #fff;
-}
-
 .product-card__content,
 .review-card {
   padding: 20px;
+}
+
+.product-card__content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .product-card__title {
@@ -343,8 +332,20 @@ button {
   display: inline-flex;
   font-size: 0.9rem;
   font-weight: 900;
-  margin-top: 16px;
   padding: 7px 13px;
+  width: fit-content;
+}
+
+.product-card__content > .product-card__price,
+.product-card__content > .product-card__prices {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.product-card__prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .about {
@@ -358,12 +359,6 @@ button {
   border-radius: var(--radius);
   box-shadow: var(--shadow-soft);
   overflow: hidden;
-}
-
-.about__image {
-  aspect-ratio: 4 / 3.5;
-  object-fit: cover;
-  width: 100%;
 }
 
 .about__list {
@@ -399,16 +394,145 @@ button {
 }
 
 .reviews .section__header,
-.reviews__grid {
+.reviews__columns,
+.reviews__trust-badge {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--container);
 }
 
+/* Fila con los 3 bloques: formulario, testimonios y capturas de WhatsApp.
+   En pantallas angostas se apilan; desde 900px quedan lado a lado y del mismo alto. */
+.reviews__columns {
+  display: grid;
+  gap: 24px;
+}
+
+/* Bloque 1: formulario "Dejanos tu opinion" */
+.review-form-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 22px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+/* Mismo efecto hover de .review-form-card y .whatsapp-proof-card: se declara una sola vez. */
+.review-form-card:hover,
+.whatsapp-proof-card:hover {
+  box-shadow: 0 18px 46px rgba(59, 36, 26, 0.14);
+  transform: translateY(-2px);
+}
+
+.review-form-card__title {
+  color: var(--chocolate);
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.review-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.review-form__label {
+  color: var(--chocolate-soft);
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.review-form__input,
+.review-form__textarea {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--chocolate);
+  padding: 13px 14px;
+  transition: border-color var(--transition), background-color var(--transition);
+  width: 100%;
+}
+
+.review-form__textarea {
+  resize: vertical;
+}
+
+.review-form__input:focus,
+.review-form__textarea:focus {
+  background: var(--white);
+  border-color: var(--pink);
+  outline: 2px solid rgba(244, 138, 167, 0.28);
+  outline-offset: 1px;
+}
+
+.review-form__error {
+  color: #b3261e;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.review-form__submit {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.review-form-card__microcopy {
+  color: var(--chocolate-soft);
+  font-size: 0.9rem;
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Bloque 2: carrusel de testimonios */
+.reviews__carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.reviews__carousel-track {
+  position: relative;
+}
+
+[data-carousel-slide] {
+  display: none;
+}
+
+[data-carousel-slide].is-active {
+  animation: fadeUp 420ms ease both;
+  display: block;
+}
+
+/* Los testimonios usan fondo solido y mas padding que el resto de .product-card, .review-card
+   (borde/radio/sombra/transicion ya vienen de esa regla compartida, no hace falta repetirlos). */
+.review-card {
+  background: var(--white);
+  padding: 24px 22px;
+}
+
+.review-card:hover {
+  border-color: rgba(244, 138, 167, 0.38);
+  box-shadow: 0 18px 46px rgba(59, 36, 26, 0.14);
+  transform: translateY(-2px);
+}
+
+.review-card__stars {
+  display: flex;
+  gap: 3px;
+}
+
 .review-card__text {
   color: var(--chocolate);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 650;
+  margin-top: 14px;
 }
 
 .review-card__author {
@@ -428,6 +552,88 @@ button {
   color: var(--chocolate-soft);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.review-card__purchase {
+  color: var(--pink-dark);
+  font-size: 0.85rem;
+  font-weight: 800;
+  margin-top: 10px;
+}
+
+.reviews__carousel .product-card__carousel-dots {
+  justify-content: center;
+  margin-top: 18px;
+  position: static;
+  transform: none;
+}
+
+.reviews__trust-badge {
+  background: var(--pink-soft);
+  border-radius: 999px;
+  color: var(--pink-dark);
+  display: block;
+  font-weight: 900;
+  margin-top: 30px;
+  padding: 12px 22px;
+  text-align: center;
+  width: fit-content;
+}
+
+/* Bloque 3: "Mensajes reales que nos alegran el dia" */
+.whatsapp-proof-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.whatsapp-proof-card__eyebrow {
+  color: var(--pink-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.whatsapp-proof-card__title {
+  color: var(--chocolate);
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-top: 6px;
+}
+
+.whatsapp-proof__frame {
+  margin: 20px auto 0;
+  max-width: 300px;
+  position: relative;
+  width: 100%;
+}
+
+.whatsapp-proof__carousel {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.whatsapp-proof__badge {
+  background: var(--chocolate);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 6px 14px;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  z-index: 3;
 }
 
 .cta {
@@ -579,9 +785,15 @@ button {
     flex-wrap: wrap;
   }
 
-  .products__grid,
-  .reviews__grid {
+  .products__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Alto minimo uniforme: en grilla multi-columna el contenido de texto varia
+     (titulo/descripcion), así que sin este piso las tarjetas de una fila quedan
+     parejas entre si pero distintas de otras filas. */
+  .product-card {
+    min-height: 540px;
   }
 
   .cta {
@@ -636,13 +848,12 @@ button {
     padding-top: 68px;
   }
 
-  .hero__media,
-  .hero__image {
-    min-height: 470px;
+  .products__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  .products__grid,
-  .reviews__grid {
+  .reviews__columns {
+    align-items: stretch;
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
@@ -650,10 +861,6 @@ button {
     align-items: center;
     gap: 56px;
     grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1fr);
-  }
-
-  .about__image {
-    aspect-ratio: 4 / 5;
   }
 
   .cta {
@@ -670,7 +877,7 @@ button {
   }
 }
 
-/* Carrusel aislado para la tarjeta Alfajores Rellenos */
+/* Carrusel reutilizable para todas las tarjetas de producto */
 .product-card__carousel {
   aspect-ratio: 4 / 3.35;
   background: linear-gradient(135deg, var(--pink-soft), var(--cream-strong));
@@ -684,54 +891,20 @@ button {
 }
 
 .product-card__carousel-image {
+  background: #fff;
   height: 100%;
   inset: 0;
-  object-fit: cover;
+  object-fit: contain;
   opacity: 0;
   position: absolute;
-  transition: opacity 260ms ease, transform 420ms ease;
+  transition: opacity 260ms ease;
   width: 100%;
 }
 
 .product-card__carousel-image.is-active {
   opacity: 1;
   position: absolute;
-  transform: scale(1.01);
   z-index: 1;
-}
-
-.product-card__carousel-button {
-  align-items: center;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(91, 55, 39, 0.12);
-  border-radius: 50%;
-  box-shadow: 0 8px 18px rgba(59, 36, 26, 0.14);
-  color: var(--chocolate);
-  display: flex;
-  font-size: 1.6rem;
-  font-weight: 800;
-  height: 38px;
-  justify-content: center;
-  line-height: 1;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: background-color var(--transition), transform var(--transition);
-  width: 38px;
-  z-index: 2;
-}
-
-.product-card__carousel-button:hover {
-  background: var(--white);
-  transform: translateY(-50%) scale(1.06);
-}
-
-.product-card__carousel-button--prev {
-  left: 12px;
-}
-
-.product-card__carousel-button--next {
-  right: 12px;
 }
 
 .product-card__carousel-dots {
@@ -756,4 +929,23 @@ button {
 .product-card__carousel-dot.is-active {
   background: var(--pink-dark);
   width: 24px;
+}
+/* ===== Carrusel sección Nosotros ===== */
+
+.about__image-wrapper .product-card__carousel {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  height: 100%;
+}
+
+.about__image-wrapper .product-card__carousel-track {
+  width: 100%;
+  height: 100%;
+}
+
+.about__image-wrapper .product-card__carousel-image {
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }

@@ -1,3 +1,6 @@
+// Numero de WhatsApp usado para el boton "Enviar opinion" (formato internacional, sin +).
+const WHATSAPP_NUMBER = "56990132040";
+
 // Espera a que el documento este listo antes de consultar elementos del DOM.
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".site-header");
@@ -5,9 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const navMenu = document.querySelector(".nav-menu");
   const navLinks = document.querySelectorAll('a[href^="#"]');
   const animatedElements = document.querySelectorAll(
-    ".hero__content, .hero__media, .section__header, .product-card, .about__image-wrapper, .about__content, .review-card, .cta, .footer__brand, .footer__links"
+    ".hero__content, .hero__media, .section__header, .product-card, .about__image-wrapper, .about__content, .review-form-card, .reviews__carousel, .whatsapp-proof__frame, .cta, .footer__brand, .footer__links"
   );
-  const forms = document.querySelectorAll("form");
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Menu responsive: abre, cierra y mantiene actualizado aria-expanded.
@@ -57,6 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
       event.preventDefault();
       closeMenu();
+
+      // El header es "#inicio" y es position:sticky, asi que su getBoundingClientRect().top
+      // siempre da ~0 una vez pegado arriba (sin importar el scroll real). Por eso se trata
+      // aparte: ir directo al top en vez de calcular un offset relativo que nunca llega a 0.
+      if (targetId === "#inicio") {
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReducedMotion ? "auto" : "smooth",
+        });
+        return;
+      }
 
       const headerHeight = header ? header.offsetHeight : 0;
       const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -127,47 +140,20 @@ document.addEventListener("DOMContentLoaded", function () {
   updateHeaderShadow();
   window.addEventListener("scroll", updateHeaderShadow, { passive: true });
 
-  // Validaciones basicas para formularios, si se agrega alguno en el futuro.
-  forms.forEach(function (form) {
-    form.addEventListener("submit", function (event) {
-      const requiredFields = form.querySelectorAll("[required]");
-      let isValid = true;
-
-      requiredFields.forEach(function (field) {
-        const value = field.value.trim();
-        const isEmail = field.type === "email";
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        field.classList.remove("is-invalid");
-
-        if (!value || (isEmail && !emailPattern.test(value))) {
-          isValid = false;
-          field.classList.add("is-invalid");
-          field.setAttribute("aria-invalid", "true");
-        } else {
-          field.setAttribute("aria-invalid", "false");
-        }
-      });
-
-      if (!isValid) {
-        event.preventDefault();
-      }
-    });
-  });
-
-  // Carrusel aislado para tarjetas de producto que lo declaren.
+  // Carrusel reutilizable: sirve tanto para carruseles de imagenes (product-card__carousel-image)
+  // como para carruseles de contenido generico marcado con [data-carousel-slide] (ej. testimonios).
   document.querySelectorAll("[data-product-carousel]").forEach(function (carousel) {
-    const images = carousel.querySelectorAll(".product-card__carousel-image");
+    const slides = carousel.querySelectorAll(".product-card__carousel-image, [data-carousel-slide]");
     const dots = carousel.querySelectorAll("[data-carousel-dot]");
-    const prevButton = carousel.querySelector("[data-carousel-prev]");
-    const nextButton = carousel.querySelector("[data-carousel-next]");
+    const interval = Number(carousel.dataset.carouselInterval) || 2000;
     let currentIndex = 0;
+    let autoPlayTimer;
 
     function showSlide(index) {
-      currentIndex = (index + images.length) % images.length;
+      currentIndex = (index + slides.length) % slides.length;
 
-      images.forEach(function (image, imageIndex) {
-        image.classList.toggle("is-active", imageIndex === currentIndex);
+      slides.forEach(function (slide, slideIndex) {
+        slide.classList.toggle("is-active", slideIndex === currentIndex);
       });
 
       dots.forEach(function (dot, dotIndex) {
@@ -175,24 +161,68 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    if (images.length === 0) return;
+    if (slides.length === 0) return;
 
-    if (prevButton) {
-      prevButton.addEventListener("click", function () {
-        showSlide(currentIndex - 1);
-      });
+    function startAutoPlay() {
+      if (prefersReducedMotion || slides.length <= 1) return;
+
+      stopAutoPlay();
+      autoPlayTimer = window.setInterval(function () {
+        showSlide(currentIndex + 1);
+      }, interval);
     }
 
-    if (nextButton) {
-      nextButton.addEventListener("click", function () {
-        showSlide(currentIndex + 1);
-      });
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        window.clearInterval(autoPlayTimer);
+      }
     }
 
     dots.forEach(function (dot, dotIndex) {
       dot.addEventListener("click", function () {
         showSlide(dotIndex);
+        startAutoPlay();
       });
     });
+
+    carousel.addEventListener("mouseenter", stopAutoPlay);
+    carousel.addEventListener("mouseleave", startAutoPlay);
+    carousel.addEventListener("focusin", stopAutoPlay);
+    carousel.addEventListener("focusout", startAutoPlay);
+    carousel.addEventListener("touchstart", stopAutoPlay, { passive: true });
+    carousel.addEventListener("touchend", startAutoPlay);
+
+    startAutoPlay();
   });
+
+  // Formulario "Dejanos tu opinion": no hay backend, asi que arma un link de WhatsApp
+  // con el nombre y la opinion del cliente y lo abre en una pestana nueva.
+  const reviewForm = document.getElementById("review-form");
+
+  if (reviewForm) {
+    const nameField = document.getElementById("review-name");
+    const textField = document.getElementById("review-text");
+    const errorMessage = document.getElementById("review-form-error");
+
+    reviewForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = nameField.value.trim();
+      const text = textField.value.trim();
+
+      if (!name || !text) {
+        errorMessage.textContent = "Por favor completa tu nombre y tu opinion antes de enviar.";
+        errorMessage.hidden = false;
+        return;
+      }
+
+      errorMessage.hidden = true;
+
+      const message = `Hola! Soy ${name} y quiero dejar mi opinion sobre Dulce Kibba: "${text}"`;
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      reviewForm.reset();
+    });
+  }
 });

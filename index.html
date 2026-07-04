@@ -7,7 +7,15 @@
   <meta name="keywords" content="Dulce Kibba, alfajores artesanales, cuchuflies, dulces caseros, reposteria artesanal, Talca, WhatsApp, Instagram">
   <meta name="author" content="Dulce Kibba">
 
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_CL">
+  <meta property="og:title" content="Dulce Kibba | Alfajores y dulces artesanales en Talca">
+  <meta property="og:description" content="Dulce Kibba, emprendimiento de Talca con alfajores artesanales, cuchuflies y dulces caseros para pedir por WhatsApp desde Instagram.">
+  <meta property="og:image" content="img/logo-dulce-kibba.avif">
+
   <title>Dulce Kibba | Alfajores y dulces artesanales en Talca</title>
+
+  <link rel="icon" href="img/logo-dulce-kibba.avif" type="image/avif">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,11 +23,18 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Sprite de iconos SVG reutilizados (evita repetir el mismo path en cada instancia). -->
+  <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+    <symbol id="icon-star" viewBox="0 0 24 24">
+      <path d="M12 2l2.95 6.28 6.93.63-5.23 4.73 1.55 6.82L12 16.9l-6.2 3.56 1.55-6.82L2.12 8.91l6.93-.63L12 2z" fill="#ffb100" />
+    </symbol>
+  </svg>
+
   <!-- Encabezado y navegacion principal -->
   <header class="site-header" id="inicio">
     <nav class="navbar" aria-label="Navegacion principal">
       <a class="logo" href="#inicio" aria-label="Ir al inicio">
-        <img src="img/logo.png" alt="Logo temporal de Dulce Kibba" class="logo__image">
+        <img src="img/logo-dulce-kibba.avif" alt="Logo temporal de Dulce Kibba" class="logo__image">
         <span class="logo__text">Dulce Kibba</span>
       </a>
 
@@ -43,10 +58,10 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__content">
         <p class="hero__eyebrow">Dulces artesanales en Talca</p>
-        <h1 class="hero__title" id="hero-title">Alfajores, cuchuflies y dulces hechos para regalar o disfrutar hoy</h1>
+        <h1 class="hero__title" id="hero-title">El detalle perfecto para cada ocasión.</h1>
         <p class="hero__text">
-          En Dulce Kibba preparamos pedidos frescos, ricos y bien presentados.
-          Elige tus favoritos, consulta disponibilidad y compra directo por WhatsApp.
+          Sorprende con dulces y regalos personalizados,
+          creados para celebrar los momentos mas especiales de la vida.
         </p>
 
         <div class="hero__actions">
@@ -59,8 +74,22 @@
         </div>
       </div>
 
-      <div class="hero__media" aria-label="Foto destacada de Dulce Kibba">
-        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=1200&q=85" alt="Mesa con postres artesanales, crema y dulces caseros" class="hero__image">
+      <div class="hero__media" data-product-carousel data-carousel-interval="2500" aria-label="Fotos destacadas de Dulce Kibba">
+        <div class="product-card__carousel-track">
+          <img src="img/banner1.avif" alt="Caja de chocolates personalizados con mensajes Feliz Día, PDI y Te Amo" class="product-card__carousel-image is-active" fetchpriority="high">
+          <img src="img/banner2.avif" alt="Caja de chocolates personalizados para el Día del Padre" class="product-card__carousel-image" loading="lazy" decoding="async">
+          <img src="img/banner3.avif" alt="Caja de chocolates personalizados con flores para el Día de la Madre" class="product-card__carousel-image" loading="lazy" decoding="async">
+          <img src="img/banner4.avif" alt="Caja de chocolates personalizados para el 8M con mensaje Mujer Valiente" class="product-card__carousel-image" loading="lazy" decoding="async">
+          <img src="img/banner5.avif" alt="Caja de galletas y chocolates personalizados para San Valentín" class="product-card__carousel-image" loading="lazy" decoding="async">
+        </div>
+
+        <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+          <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+          <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+          <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 3" data-carousel-dot></button>
+          <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 4" data-carousel-dot></button>
+          <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 5" data-carousel-dot></button>
+        </div>
       </div>
     </section>
 
@@ -77,24 +106,77 @@
 
       <div class="products__grid">
         <article class="product-card">
-          <img src="/img/alfajor_simple_1.jpg" alt="Alfajores artesanales rellenos con manjar" class="product-card__image">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Mini dulces surtidos">
+            <div class="product-card__carousel-track">
+              <img src="img/alfajor-simple.avif" alt="Alfajor simple bañado en chocolate blanco o negro" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/alfajor1.avif" alt="Alfajor simple Dulce Kibba, vista alternativa" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/alfajor2.avif" alt="Alfajor simple Dulce Kibba, detalle del empaque" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Alfajor Simple</h3>
+            <h3 class="product-card__title">ALFAJOR SIMPLE</h3>
             <p class="product-card__text">Alfajores tradicional bañado en chocolate blanco o negro.</p>
             <p class="product-card__price">$700</p>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-card__carousel" data-product-carousel aria-label="Galeria de Alfajores Rellenos">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Chocolate Relleno">
             <div class="product-card__carousel-track">
-              <img src="img/alfajor_relleno.jpg" alt="Alfajores de chocolate y dulces banados" class="product-card__image product-card__carousel-image is-active">
-              <img src="img/alfajor_relleno2.jpeg" alt="Alfajores rellenos artesanales Dulce Kibba" class="product-card__image product-card__carousel-image">
-              <img src="img/alfajor_relleno3.jpeg" alt="Variedad de alfajores rellenos Dulce Kibba" class="product-card__image product-card__carousel-image">
+              <img src="img/chocorelleno.avif" alt="Chocolate relleno bañado en chocolate negro o blanco" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/chocorelleno2.avif" alt="Chocolate relleno, detalle del relleno" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/chocorelleno3.avif" alt="Chocolate relleno, otra variedad de sabor" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/chocorelleno4.avif" alt="Chocolate relleno, presentación individual" class="product-card__carousel-image" loading="lazy" decoding="async">
             </div>
 
-            <button class="product-card__carousel-button product-card__carousel-button--prev" type="button" aria-label="Imagen anterior" data-carousel-prev>&lsaquo;</button>
-            <button class="product-card__carousel-button product-card__carousel-button--next" type="button" aria-label="Imagen siguiente" data-carousel-next>&rsaquo;</button>
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">CHOCOLATE RELLENO</h3>
+            <p class="product-card__text">Chocolate negro o blanco. Rellenos disponibles: Oreo, Marshmellow o Chubi.</p>
+            <p class="product-card__price">3 x $700</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Pedidos personalizados">
+            <div class="product-card__carousel-track">
+              <img src="img/paletas-dulce-kibba-1.avif" alt="Paletas dulces personalizadas para pedidos especiales" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/paletas-dulce-kibba-2.avif" alt="Paleta rellena bañada en chocolate, detalle" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">PALETA RELLENA</h3>
+            <p class="product-card__text">Paleta de bizcocho con manjar, bañada en chocolate negro o blanco.</p>
+            <div class="product-card__prices">
+              <div class="product-card__price">$850 Simple</div>
+              <div class="product-card__price">$1.100 Personalizado</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Alfajores Rellenos">
+            <div class="product-card__carousel-track">
+              <img src="img/alfajor-relleno-chocolate.avif" alt="Alfajores de chocolate y dulces banados" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/alfajor-relleno-artesanal.avif" alt="Alfajores rellenos artesanales Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/variedad-alfajores-rellenos.avif" alt="Variedad de alfajores rellenos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
 
             <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
               <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
@@ -103,23 +185,127 @@
             </div>
           </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Alfajores Rellenos</h3>
+            <h3 class="product-card__title">ALFAJORES RELLENOS</h3>
             <p class="product-card__text">Alfajores rellenos, Manjar Bon o Bon, Manjar Brownie, Manjar Oreo, Manjar chubi, Manjar Marshmellow, Manjar frambuesa.</p>
             <p class="product-card__price">$1.000</p>
           </div>
         </article>
 
         <article class="product-card">
-          <div class="product-card__carousel" data-product-carousel aria-label="Galeria de Alfajores Rellenos">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Mini dulces surtidos">
             <div class="product-card__carousel-track">
-              <img src="img/personalizado1.jpeg" alt="Alfajores personalizado con etiqueta" class="product-card__image product-card__carousel-image is-active">
-              <img src="img/personalizado2.jpeg" alt="Alfajores personalizado con etiqueta" class="product-card__image product-card__carousel-image">
-              <img src="img/personalizado3.jpeg" alt="Alfajores personalizado con etiqueta" class="product-card__image product-card__carousel-image">
-              <img src="img/personalizado4.jpeg" alt="Alfajores personalizado con etiqueta" class="product-card__image product-card__carousel-image">
+              <img src="img/cono-dulce-kibba.avif" alt="Conitos rellenos bañados en chocolate" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cono1.avif" alt="Conito relleno, detalle del barquillo" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cono2.avif" alt="Conito relleno, vista del relleno" class="product-card__carousel-image" loading="lazy" decoding="async">
             </div>
 
-            <button class="product-card__carousel-button product-card__carousel-button--prev" type="button" aria-label="Imagen anterior" data-carousel-prev>&lsaquo;</button>
-            <button class="product-card__carousel-button product-card__carousel-button--next" type="button" aria-label="Imagen siguiente" data-carousel-next>&rsaquo;</button>
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">CONITOS RELLENOS</h3>
+            <p class="product-card__text">Barquillo artesanal bañado en chocolate y relleno con: Manjar, Manjar Oreo, Manjar Bon o Bon, Manjar Chubi, Manjar Marshmellow.</p>
+            <p class="product-card__price">$1.000</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Mini dulces surtidos">
+            <div class="product-card__carousel-track">
+              <img src="img/cocadas-dulce-kibba-1.avif" alt="Cocadas artesanales embolsadas para eventos" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cocadas-dulce-kibba-2.avif" alt="Mini dulces artesanales para eventos y reuniones" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">COCADAS</h3>
+            <p class="product-card__text">Dulce de galleta, manjar y un toque de coco rallado. Paquete de 3 unidades.</p>
+            <p class="product-card__price">$1.000</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Mini Cuchufli">
+            <div class="product-card__carousel-track">
+              <img src="img/minicuchufli1.avif" alt="Mini cuchuflies con etiqueta personalizada" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/minicuchufli2.avif" alt="Mini cuchuflies personalizados, bandeja completa" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">MINI CUCHUFLI</h3>
+            <p class="product-card__text">Mini cuchuflies + Etiqueta personalizada. Venta desde 15 unidades. Diseños personalizables.</p>
+            <p class="product-card__price">$1.000</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Pedidos personalizados">
+            <div class="product-card__carousel-track">
+              <img src="img/cuchufli-dulce-kibba.avif" alt="Cuchuflies rellenos con manjar bañados en chocolate" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cuchufli2.avif" alt="Cuchuflies rellenos, detalle del baño de chocolate" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cuchufli3.avif" alt="Cuchuflies rellenos, presentación en caja" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">CUCHUFLI</h3>
+            <p class="product-card__text">4 Cuchuflies rellenos con manjar. Bañados en chocolate blanco, negro o mixto.</p>
+            <div class="product-card__prices">
+              <div class="product-card__price">$1.200</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Corazón Relleno">
+            <div class="product-card__carousel-track">
+              <img src="img/cora1.avif" alt="Corazón relleno bañado en chocolate negro" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cora2.avif" alt="Corazón relleno decorado con flores" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cora3.avif" alt="Corazón relleno decorado con dulces de colores" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 3" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">CORAZON RELLENO</h3>
+            <p class="product-card__text">Corazon relleno con bizcocho y manjar, bañado en chocolate negro o blanco.</p>
+            <div class="product-card__prices">
+              <div class="product-card__price">$1.200 Simple</div>
+              <div class="product-card__price">$1.500 Personalizado</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galeria de Alfajores Rellenos">
+            <div class="product-card__carousel-track">
+              <img src="img/alfajor-personalizado-etiqueta-1.avif" alt="Alfajores personalizado con etiqueta" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/alfajor-personalizado-etiqueta-2.avif" alt="Alfajores personalizado con etiqueta" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/alfajor-personalizado-etiqueta-3.avif" alt="Alfajores personalizado con etiqueta" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/alfajor-personalizado-etiqueta-4.avif" alt="Alfajores personalizado con etiqueta" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
 
             <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
               <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
@@ -129,36 +315,133 @@
             </div>
           </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Alfajores Personalizados</h3>
+            <h3 class="product-card__title">ALFAJORES PERSONALIZADOS</h3>
             <p class="product-card__text">Alfajor tradicional bañado en chocolate blanco o negro personalizado con frases o sprinkles + etiqueta personalizada.</p>
             <p class="product-card__price">$1.500</p>
           </div>
         </article>
 
         <article class="product-card">
-          <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85" alt="Caja dulce con reposteria artesanal para regalo" class="product-card__image">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Caja de Alfajores">
+            <div class="product-card__carousel-track">
+              <img src="img/2alfajores.avif" alt="Caja de 2 alfajores personalizados" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/3alfajores.avif" alt="Caja de 3 alfajores personalizados" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/4alfajores.avif" alt="Caja de 4 alfajores personalizados" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/6alfajores.avif" alt="Caja de 6 alfajores personalizados" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/9alfajores.avif" alt="Caja de 9 alfajores personalizados" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/12alfajores.avif" alt="Caja de 12 alfajores personalizados" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Caja dulce regalo</h3>
-            <p class="product-card__text">Presentacion especial con mix de dulces artesanales, ideal para cumpleanos o detalles con carino.</p>
-            <p class="product-card__price">Desde $12.000</p>
+            <h3 class="product-card__title">CAJA DE ALFAJORES</h3>
+            <p class="product-card__text">Alfajores personalizados que convinan sabor, creatividad y dedicación. Formato de 2, 3, 4, 6, 9, 12 Alfajores.</p>
+            <p class="product-card__price">Desde $3.000</p>
           </div>
         </article>
 
         <article class="product-card">
-          <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85" alt="Mini dulces artesanales para eventos y reuniones" class="product-card__image">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Caja Alfajor + Cuchufli Personalizado">
+            <div class="product-card__carousel-track">
+              <img src="img/cajamix.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cajamix2.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cajamix3.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cajamix4.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cajamix5.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cajamix6.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cajamix7.avif" alt="Caja combinada de alfajor y cuchufli personalizado" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Mini dulces surtidos</h3>
-            <p class="product-card__text">Bocados pequenos, ricos y variados para reuniones, celebraciones o mesas dulces.</p>
-            <p class="product-card__price">Desde $10.000</p>
+            <h3 class="product-card__title">CAJA ALFAJOR + CUCHUFLI PERSONALIZADO</h3>
+            <p class="product-card__text">La combinación perfecta para sorprender con un regalo dulce y especial.</p>
+            <p class="product-card__price">Desde $3.000</p>
           </div>
         </article>
 
         <article class="product-card">
-          <img src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=900&q=85" alt="Reposteria casera y dulces artesanales preparados por encargo" class="product-card__image">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Cuchufli Personalizado">
+            <div class="product-card__carousel-track">
+              <img src="img/cuchuflipersonalizado.avif" alt="Cuchuflies personalizados con sprinkles y frases" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/cuchuflipersonalizado2.avif" alt="Cuchuflies personalizados con sprinkles y frases" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/cuchuflipersonalizado3.avif" alt="Cuchuflies personalizados con sprinkles y frases" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
           <div class="product-card__content">
-            <h3 class="product-card__title">Pedidos personalizados</h3>
-            <p class="product-card__text">Arma una combinacion a tu gusto segun ocasion, cantidad y sabores disponibles.</p>
-            <p class="product-card__price">Cotiza por WhatsApp</p>
+            <h3 class="product-card__title">CUCHUFLI PERSONALIZADO</h3>
+            <p class="product-card__text">Caja con cuchuflies rellenos con majar, bañados en chocolate blanco o negro. Personalizado con sprinkles o frases.</p>
+            <p class="product-card__price">Desde $3.000</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Box Alfajor Relleno">
+            <div class="product-card__carousel-track">
+              <img src="img/2rellenos.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/2rellenos2.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/2rellenos3.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/3rellenos.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/3rellenos2.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/3rellenos3.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/4rellenos.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/4rellenos2.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/4rellenos3.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/6rellenos.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/6rellenos2.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/6rellenos3.avif" alt="Box de alfajores rellenos surtidos" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">BOX ALFAJOR RELLENO</h3>
+            <p class="product-card__text">Box Dúo Perfecto (2 Sabores), Box Trio Soñado (3 Sabores), Box 4 Sabores, Box Tentación (6 Sabores). Rellenos disponibles: Frambuesa, Oreo, Bon o Bon, Brownie, Chubi, Marshmellow.</p>
+            <p class="product-card__price">Desde $4.500</p>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería de Torta Cuchufli">
+            <div class="product-card__carousel-track">
+              <img src="img/torta1.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+              <img src="img/torta2.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/torta3.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/torta4.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/torta5.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image" loading="lazy" decoding="async">
+              <img src="img/torta6.avif" alt="Torta de cuchuflies personalizada" class="product-card__carousel-image" loading="lazy" decoding="async">
+            </div>
+
+
+            <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+              <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+              <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            </div>
+          </div>
+          <div class="product-card__content">
+            <h3 class="product-card__title">TORTA CUCHUFLI</h3>
+            <p class="product-card__text">Torta de cuchuflies rellenos con manjar. Chocolate blanco, negro o mixto. Formato desde 30 unidades. Incluye topper a elección.</p>
+            <p class="product-card__price">Desde $14.000</p>
           </div>
         </article>
       </div>
@@ -167,21 +450,47 @@
     <!-- Seccion sobre la tienda -->
     <section class="about section" id="nosotros" aria-labelledby="about-title">
       <div class="about__image-wrapper">
-        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=1000&q=85" alt="Preparacion artesanal de reposteria casera en cocina" class="about__image">
+        <div class="product-card__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Galería Dulce Kibba">
+          <div class="product-card__carousel-track">
+            <img src="img/tortas-dulce-kibba.avif" alt="Tortas artesanales Dulce Kibba" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+            <img src="img/c1.avif" alt="Preparación artesanal Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c2.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c3.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c4.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c5.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c6.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c7.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c8.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c9.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c10.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c12.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c13.avif" alt="Productos Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+            <img src="img/c14.avif" alt="Detalles Dulce Kibba" class="product-card__carousel-image" loading="lazy" decoding="async">
+          </div>
+
+          <div class="product-card__carousel-dots" aria-label="Seleccionar imagen">
+            <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver imagen 1" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 2" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 3" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver imagen 4" data-carousel-dot></button>
+          </div>
+        </div>
       </div>
 
       <div class="about__content">
         <p class="section__eyebrow">Nosotros</p>
-        <h2 class="section__title" id="about-title">Reposteria artesanal hecha en Talca, pedido a pedido</h2>
+        <h2 class="section__title" id="about-title">Detalles hechos con cariño para cada ocasión</h2>
+
         <p class="about__text">
-          Dulce Kibba es un emprendimiento local pensado para quienes buscan dulces ricos,
-          frescos y bien presentados sin complicarse. Trabajamos por encargo, coordinamos
-          directo por WhatsApp y publicamos novedades en Instagram para que siempre sepas
-          que puedes pedir.
+          Dulce Kibba nació del amor por los pequeños detalles y de la idea de transformar
+          momentos especiales en recuerdos inolvidables. Creamos dulces y regalos personalizados,
+          preparados con dedicación y cuidado en cada detalle, para sorprender, emocionar y
+          acompañar las celebraciones más importantes de nuestros clientes.
         </p>
+
         <ul class="about__list">
-          <li>Atencion personalizada por Instagram y WhatsApp.</li>
-          <li>Productos preparados con dedicacion y presentacion cuidada.</li>
+          <li>Atención personalizada por Instagram y WhatsApp.</li>
+          <li>Productos preparados con dedicación y presentación cuidada.</li>
           <li>Pedidos para regalos, celebraciones, reuniones y antojos.</li>
         </ul>
       </div>
@@ -194,37 +503,153 @@
         <h2 class="section__title" id="reviews-title">Lo que dicen quienes ya probaron</h2>
       </div>
 
-      <div class="reviews__grid">
-        <article class="review-card">
-          <p class="review-card__text">
-            "Los alfajores estaban exquisitos, fresquitos y muy bien presentados. Se nota el carino."
-          </p>
-          <div class="review-card__author">
-            <span class="review-card__name">Camila R.</span>
-            <span class="review-card__source">Cliente verificada</span>
-          </div>
-        </article>
+      <div class="reviews__columns">
+        <!-- Bloque 1: formulario para dejar una opinion (se envia por WhatsApp, no hay backend) -->
+        <div class="review-form-card">
+          <h3 class="review-form-card__title">¿Ya probaste Dulce Kibba? Cuéntanos</h3>
 
-        <article class="review-card">
-          <p class="review-card__text">
-            "Encargue una cajita para regalar y fue un acierto total. Linda, rica y lista a tiempo."
-          </p>
-          <div class="review-card__author">
-            <span class="review-card__name">Valentina M.</span>
-            <span class="review-card__source">Cliente verificada</span>
-          </div>
-        </article>
+          <form class="review-form" id="review-form" novalidate>
+            <div class="review-form__field">
+              <label for="review-name" class="review-form__label">Tu nombre</label>
+              <input type="text" id="review-name" name="name" class="review-form__input" placeholder="Tu nombre" autocomplete="name">
+            </div>
 
-        <article class="review-card">
-          <p class="review-card__text">
-            "Los cuchuflies fueron los primeros en desaparecer de la mesa. Volveria a pedir feliz."
-          </p>
-          <div class="review-card__author">
-            <span class="review-card__name">Fernanda P.</span>
-            <span class="review-card__source">Cliente verificada</span>
+            <div class="review-form__field">
+              <label for="review-text" class="review-form__label">Tu opinión</label>
+              <textarea id="review-text" name="text" class="review-form__textarea" rows="3" placeholder="Ej: Los alfajores llegaron perfectos para el cumple de mi mamá"></textarea>
+            </div>
+
+            <p class="review-form__error" id="review-form-error" role="alert" hidden></p>
+
+            <button type="submit" class="button button--primary review-form__submit">
+              <svg class="review-form__submit-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.48 1.32 5.01L2 22l5.25-1.38a9.94 9.94 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm0 18.06h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.29c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.17c-.25-.12-1.47-.72-1.7-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.49-.41-.42-.56-.43-.14-.01-.31-.01-.48-.01-.17 0-.43.06-.66.31-.23.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.17 1.73 2.64 4.19 3.71.59.25 1.04.4 1.4.51.59.19 1.12.16 1.54.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.16-.48-.28Z"/>
+              </svg>
+              Enviar opinión por WhatsApp
+            </button>
+          </form>
+
+          <p class="review-form-card__microcopy">Tu opinión podría aparecer aquí. ¡Gracias por endulzarnos el día!</p>
+        </div>
+
+        <!-- Bloque 2: carrusel de testimonios ya publicados -->
+        <div class="reviews__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Testimonios de clientes">
+          <div class="reviews__carousel-track">
+            <article class="review-card is-active" data-carousel-slide>
+              <div class="review-card__stars" aria-label="5 de 5 estrellas">
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <p class="review-card__text">
+                "Los alfajores estaban exquisitos, fresquitos y muy bien presentados. Se nota el carino."
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Camila R.</span>
+                <span class="review-card__source">Cliente verificada</span>
+              </div>
+              <p class="review-card__purchase">Compró: Alfajores personalizados</p>
+            </article>
+
+            <article class="review-card" data-carousel-slide>
+              <div class="review-card__stars" aria-label="5 de 5 estrellas">
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <p class="review-card__text">
+                "Encargue una cajita para regalar y fue un acierto total. Linda, rica y lista a tiempo."
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Valentina M.</span>
+                <span class="review-card__source">Cliente verificada</span>
+              </div>
+              <p class="review-card__purchase">Compró: Caja mixta de alfajores y cuchuflies.</p>
+            </article>
+
+            <article class="review-card" data-carousel-slide>
+              <div class="review-card__stars" aria-label="5 de 5 estrellas">
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <p class="review-card__text">
+                "Muy rico los conitos de marsmellow y las paletitas."
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Johny Abrigo.</span>
+                <span class="review-card__source">Cliente verificado</span>
+              </div>
+              <p class="review-card__purchase">Compró: Cono de distintos sabores y paletas.</p>
+            </article>
+
+            <article class="review-card" data-carousel-slide>
+              <div class="review-card__stars" aria-label="5 de 5 estrellas">
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg width="16" height="16" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <p class="review-card__text">
+                "Los cuchuflies fueron los primeros en desaparecer de la mesa. Volveria a pedir feliz."
+              </p>
+              <div class="review-card__author">
+                <span class="review-card__name">Fernanda P.</span>
+                <span class="review-card__source">Cliente verificada</span>
+              </div>
+              <p class="review-card__purchase">Compró: Cuchuflies</p>
+            </article>
           </div>
-        </article>
+
+          <div class="product-card__carousel-dots" aria-label="Seleccionar testimonio">
+            <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver testimonio 1" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver testimonio 2" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver testimonio 3" data-carousel-dot></button>
+            <button class="product-card__carousel-dot" type="button" aria-label="Ver testimonio 4" data-carousel-dot></button>
+          </div>
+        </div>
+
+        <!-- Bloque 3: capturas reales de conversaciones con clientas -->
+        <div class="whatsapp-proof-card" id="mensajes-reales">
+          <p class="whatsapp-proof-card__eyebrow">Mensajes</p>
+          <h3 class="whatsapp-proof-card__title">Que nos alegran el día</h3>
+
+          <div class="whatsapp-proof__frame">
+            <span class="whatsapp-proof__badge">100% real</span>
+
+            <div class="product-card__carousel whatsapp-proof__carousel" data-product-carousel data-carousel-interval="2000" aria-label="Capturas de conversaciones de WhatsApp con clientas">
+              <div class="product-card__carousel-track">
+                <img src="img/resena-whatsapp-1.avif" alt="Captura de conversación de WhatsApp: una clienta cuenta que le encantaron los alfajores con chubi y manjar" class="product-card__carousel-image is-active" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-2.avif" alt="Captura de conversación de WhatsApp: una clienta dice que los conitos le quedaron muy ricos" class="product-card__carousel-image" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-3.avif" alt="Captura de conversación de WhatsApp: una clienta dice que estaban demasiado ricos" class="product-card__carousel-image" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-4.avif" alt="Captura de conversación de WhatsApp: una clienta dice que están muy buenos" class="product-card__carousel-image" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-5.avif" alt="Captura de conversación de WhatsApp: una clienta agradece porque estaban muy buenos" class="product-card__carousel-image" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-6.avif" alt="Captura de conversación de WhatsApp: una clienta dice que quedó con más ganas de comer, estaban ricas" class="product-card__carousel-image" loading="lazy" decoding="async">
+                <img src="img/resena-whatsapp-7.avif" alt="Captura de conversación de WhatsApp: una clienta dice que los alfajores son exquisitos y 100% recomendables" class="product-card__carousel-image" loading="lazy" decoding="async">
+              </div>
+
+              <div class="product-card__carousel-dots" aria-label="Seleccionar captura">
+                <button class="product-card__carousel-dot is-active" type="button" aria-label="Ver captura 1" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 2" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 3" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 4" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 5" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 6" data-carousel-dot></button>
+                <button class="product-card__carousel-dot" type="button" aria-label="Ver captura 7" data-carousel-dot></button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <p class="reviews__trust-badge">+200 pedidos entregados en Talca y Curicó ⭐ 4.9/5</p>
     </section>
 
     <!-- Llamado final a la accion -->
@@ -237,10 +662,10 @@
         </p>
       </div>
       <div class="cta__actions">
-        <a class="button button--primary" href="https://wa.me/56912345678?text=Hola%20Dulce%20Kibba%2C%20quiero%20cotizar%20un%20pedido" target="_blank" rel="noopener noreferrer">
+        <a class="button button--primary" href="https://wa.me/56990132040?text=Hola%20Dulce%20Kibba%2C%20quiero%20cotizar%20un%20pedido" target="_blank" rel="noopener noreferrer">
           Cotizar por WhatsApp
         </a>
-        <a class="button button--secondary" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">
+        <a class="button button--secondary" href="https://www.instagram.com/dulce.kibba/" target="_blank" rel="noopener noreferrer">
           Ver Instagram
         </a>
       </div>
@@ -251,7 +676,7 @@
   <footer class="footer" id="contacto">
     <div class="footer__brand">
       <a class="logo logo--footer" href="#inicio" aria-label="Volver al inicio">
-        <img src="img/logo.png" alt="Logo temporal de Dulce Kibba" class="logo__image">
+        <img src="img/logo-dulce-kibba.avif" alt="Logo temporal de Dulce Kibba" class="logo__image" loading="lazy" decoding="async">
         <span class="logo__text">Dulce Kibba</span>
       </a>
       <p class="footer__text">
@@ -259,13 +684,13 @@
       </p>
     </div>
 
-    <div class="footer__links">
+    <nav class="footer__links" aria-label="Enlaces del pie de página">
       <a href="#productos" class="footer__link">Productos</a>
       <a href="#nosotros" class="footer__link">Nosotros</a>
       <a href="#opiniones" class="footer__link">Opiniones</a>
-      <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
-      <a href="https://wa.me/56912345678?text=Hola%20Dulce%20Kibba%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
-    </div>
+      <a href="https://www.instagram.com/dulce.kibba/" target="_blank" rel="noopener noreferrer" class="footer__link">Instagram</a>
+      <a href="https://wa.me/56990132040?text=Hola%20Dulce%20Kibba%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener noreferrer" class="footer__link">WhatsApp</a>
+    </nav>
 
     <div class="footer__bottom">
       <p>&copy; 2026 Dulce Kibba. Todos los derechos reservados.</p>
