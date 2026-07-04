@@ -277,7 +277,14 @@ button {
 
 .products__grid {
   display: grid;
-  gap: 18px;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Alto minimo uniforme en mobile: con 2 columnas angostas el texto varia mas de
+   lineas entre tarjetas, sin este piso una fila queda mas alta que la siguiente. */
+.product-card {
+  min-height: 420px;
 }
 
 .product-card,
@@ -786,6 +793,7 @@ button {
   }
 
   .products__grid {
+    gap: 18px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 

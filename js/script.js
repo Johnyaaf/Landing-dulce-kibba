@@ -189,8 +189,34 @@ document.addEventListener("DOMContentLoaded", function () {
     carousel.addEventListener("mouseleave", startAutoPlay);
     carousel.addEventListener("focusin", stopAutoPlay);
     carousel.addEventListener("focusout", startAutoPlay);
-    carousel.addEventListener("touchstart", stopAutoPlay, { passive: true });
-    carousel.addEventListener("touchend", startAutoPlay);
+
+    // Deslizar con el dedo para cambiar de foto en mobile.
+    const SWIPE_THRESHOLD = 40;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    carousel.addEventListener(
+      "touchstart",
+      function (event) {
+        stopAutoPlay();
+        const touch = event.touches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
+      },
+      { passive: true }
+    );
+
+    carousel.addEventListener("touchend", function (event) {
+      const touch = event.changedTouches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+
+      if (Math.abs(deltaX) > SWIPE_THRESHOLD && Math.abs(deltaX) > Math.abs(deltaY)) {
+        showSlide(deltaX < 0 ? currentIndex + 1 : currentIndex - 1);
+      }
+
+      startAutoPlay();
+    });
 
     startAutoPlay();
   });
