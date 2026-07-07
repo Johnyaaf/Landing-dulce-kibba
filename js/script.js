@@ -1,6 +1,14 @@
 // Numero de WhatsApp usado para el boton "Enviar opinion" (formato internacional, sin +).
 const WHATSAPP_NUMBER = "56990132040";
 
+// Envia un evento a Google Analytics 4. Si gtag no cargo (bloqueador de
+// anuncios, sin conexion, etc.) simplemente no hace nada: nunca rompe el sitio.
+function trackEvent(eventName, params) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params || {});
+  }
+}
+
 // Espera a que el documento este listo antes de consultar elementos del DOM.
 document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".site-header");
@@ -247,6 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const message = `Hola! Soy ${name} y quiero dejar mi opinion sobre Dulce Kibba: "${text}"`;
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
+      trackEvent("whatsapp_click", { button_label: "Enviar opinión por WhatsApp", location: "review_form" });
       window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       reviewForm.reset();
     });
@@ -267,4 +276,43 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.textContent = expanded ? "Ver menos" : "Ver más";
     });
   });
+
+  // Analytics: clics en los CTA reales de la landing (botones de WhatsApp e
+  // Instagram del hero/CTA final, y los mismos enlaces en el footer). Cada
+  // uno lleva data-analytics-location="hero" | "cta_final" | "footer" en el HTML.
+  document
+    .querySelectorAll('a.button[data-analytics-location], .footer__link[data-analytics-location]')
+    .forEach(function (link) {
+      link.addEventListener("click", function () {
+        const href = link.getAttribute("href") || "";
+        const label = link.textContent.trim();
+        const location = link.dataset.analyticsLocation || "desconocido";
+
+        if (href.includes("wa.me") || href.includes("api.whatsapp.com")) {
+          trackEvent("whatsapp_click", { button_label: label, location: location });
+        } else if (href.includes("instagram.com")) {
+          trackEvent("instagram_click", { button_label: label, location: location });
+        } else {
+          trackEvent("cta_click", { button_label: label, location: location, destination_url: href });
+        }
+      });
+    });
+
+  // Analytics: clic en cualquier parte de una tarjeta de producto, para ver
+  // que productos generan mas interes (un solo listener en la grilla en vez
+  // de uno por tarjeta).
+  const productsGrid = document.querySelector(".products__grid");
+
+  if (productsGrid) {
+    productsGrid.addEventListener("click", function (event) {
+      const card = event.target.closest(".product-card");
+
+      if (!card) return;
+
+      const title = card.querySelector(".product-card__title");
+      trackEvent("product_card_click", {
+        product_name: title ? title.textContent.trim() : "desconocido",
+      });
+    });
+  }
 });
