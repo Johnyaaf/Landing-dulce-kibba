@@ -245,14 +245,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const text = textField.value.trim();
 
       if (!name || !text) {
-        errorMessage.textContent = "Por favor completa tu nombre y tu opinion antes de enviar.";
+        errorMessage.textContent = "Por favor completa tu nombre y tu opinión antes de enviar.";
         errorMessage.hidden = false;
         return;
       }
 
       errorMessage.hidden = true;
 
-      const message = `Hola! Soy ${name} y quiero dejar mi opinion sobre Dulce Kibba: "${text}"`;
+      const message = `Hola! Soy ${name} y quiero dejar mi opinión sobre Dulce Kibba: "${text}"`;
       const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
       trackEvent("whatsapp_click", { button_label: "Enviar opinión por WhatsApp", location: "review_form" });
