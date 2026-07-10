@@ -261,6 +261,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Oculta las etiquetas "Nuevo producto" una vez pasada su fecha de vencimiento
+  // (data-badge-expires="AAAA-MM-DD"), para que la promo dure solo unos dias.
+  document.querySelectorAll("[data-badge-expires]").forEach(function (badge) {
+    const expires = new Date(badge.dataset.badgeExpires + "T23:59:59");
+
+    if (Date.now() > expires.getTime()) {
+      badge.remove();
+    }
+  });
+
   // "Ver mas / Ver menos" en la descripcion de cada producto (solo visible en
   // mobile via CSS): evita que una tarjeta con texto largo quede mucho mas
   // alta que sus vecinas en la grilla de 2 columnas.

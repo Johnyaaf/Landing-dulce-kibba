@@ -334,6 +334,18 @@ button {
   transform: translateY(-4px);
 }
 
+.product-card__badge {
+  background: linear-gradient(135deg, var(--pink), var(--pink-dark));
+  color: var(--white);
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  padding: 7px 12px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .product-card__content,
 .review-card {
   padding: 20px;
