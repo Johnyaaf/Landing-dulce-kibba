@@ -622,13 +622,6 @@ button {
   font-weight: 700;
 }
 
-.review-card__purchase {
-  color: var(--pink-dark);
-  font-size: 0.85rem;
-  font-weight: 800;
-  margin-top: 10px;
-}
-
 .reviews__carousel .product-card__carousel-dots {
   justify-content: center;
   margin-top: 18px;
