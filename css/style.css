@@ -337,13 +337,17 @@ button {
 .product-card__badge {
   background: linear-gradient(135deg, var(--pink), var(--pink-dark));
   color: var(--white);
-  display: block;
   font-size: 0.7rem;
   font-weight: 800;
+  left: 0;
   letter-spacing: 0.03em;
   padding: 7px 12px;
+  position: absolute;
+  right: 0;
   text-align: center;
   text-transform: uppercase;
+  top: 0;
+  z-index: 3;
 }
 
 .product-card__content,
