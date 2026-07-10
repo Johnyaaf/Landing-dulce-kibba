@@ -42,7 +42,6 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   min-width: 320px;
-  padding-bottom: 78px;
 }
 
 img {
@@ -736,7 +735,7 @@ button {
 .footer {
   background: #20130f;
   color: var(--white);
-  padding: 46px 18px 24px;
+  padding: 46px 18px 102px;
 }
 
 .footer__brand,
@@ -826,8 +825,8 @@ button {
 }
 
 @media (min-width: 640px) {
-  body {
-    padding-bottom: 0;
+  .footer {
+    padding-bottom: 24px;
   }
 
   /* Desde tablet se muestra la descripcion completa; "Ver mas" es solo para mobile. */
