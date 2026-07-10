@@ -30,6 +30,7 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
 }
 
@@ -41,7 +42,6 @@ body {
   font-family: var(--font-main);
   line-height: 1.6;
   min-width: 320px;
-  overflow-x: hidden;
   padding-bottom: 78px;
 }
 
@@ -204,10 +204,15 @@ button {
 
 .info-strip__list li {
   color: var(--chocolate-soft);
-  font-size: 0.64rem;
+  font-size: 0.6rem;
   font-weight: 700;
   line-height: 1.25;
   white-space: nowrap;
+}
+
+.info-strip__break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 .nav-toggle {
@@ -917,6 +922,10 @@ button {
 
   .info-strip__list li {
     font-size: 0.76rem;
+  }
+
+  .info-strip__break {
+    display: none;
   }
 
   .nav-menu {
